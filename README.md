@@ -35,7 +35,8 @@ Hence, the multiple repos.
 ### Step 2: Dockerized APIs
 
 - Created Dockerfile for each API
-- Created docker-compose 
+- Created docker-compose
+- Replaced API url with docker network name
 - Tested with : 
 
 ```sh
@@ -69,8 +70,8 @@ kubectl get services
 - Built image and pushed it to DockerHub
 
 ```sh
-docker build -t alisonv2/kub-v3 .
-docker push 
+docker build -t alisonv2/kub-v3-users .
+docker push alisonv2/kub-v3-users
 ```
 
 - Created users-deployment.yaml and applied it
@@ -88,6 +89,45 @@ kubectl apply -f users-service.yaml
 minikube service users-service
 ```
 
-### Step 4: 
+### Step 4: Deployment & Service Creation for Auth API
 
+- Reverted users-api code so it does send requests to the auth-api
+- Replaced API urls with environment variables so the exact url used can be changed depending on which environment we're running
+- Added environment to docker-compose
+- Built new image only for auth and pushed it to DockerHub
 
+```sh
+cd auth-api
+docker build -t alisonv2/kub-v3-auth .
+docker push alisonv2/kub-v3-auth
+```
+
+- Created auth-deployment inside users-deployment so it doesn't create another pod. The goal is to have auth and users as two different containers inside the same pod.
+- Updated users image
+
+```sh
+cd ..
+cd users-api
+docker build -t alisonv2/kub-v3-users .
+docker push alisonv2/kub-v3-users
+```
+
+- Provide AUTH_ADDRESS for Pod-internal communication
+- Applied updated users-deployment
+- Check if both containers are running (should see 2/2 Running and 1/1 Terminating)
+
+```sh
+cd ..
+cd kubernetes
+kubectl apply -f users-deployment.yaml
+```
+
+- Signup test with Postman: Tests the users-api
+
+<img src="signup-test.jpg" />
+
+- Login test with Postman: Tests users/auth APIs communication, as the token is created in the auth-api
+
+<img src="login-test.jpg" />
+
+### Step 5: 

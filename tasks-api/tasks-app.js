@@ -16,7 +16,7 @@ const extractAndVerifyToken = async (headers) => {
   }
   const token = headers.authorization.split(' ')[1];
 
-  const response = await axios.get('http://auth/verify-token/' + token);
+  const response = await axios.get(`http://${process.env.AUTH_ADDRESS}/verify-token/` + token);
   return response.data.uid;
 };
 
