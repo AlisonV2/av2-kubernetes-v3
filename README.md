@@ -130,4 +130,8 @@ kubectl apply -f users-deployment.yaml
 
 <img src="login-test.jpg" />
 
-### Step 5: 
+### Step 5: Users-deployment and auth-deployment Separation
+
+- Created auth-deployment.yaml
+- Created auth-service.yaml
+- Chosed ClusterIP as a service type so the auth-api is not exposed outside the cluster

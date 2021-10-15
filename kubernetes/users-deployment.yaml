@@ -18,5 +18,3 @@ spec:
           env: 
             - name: AUTH_ADDRESS
               value: localhost
-        - name: auth
-          image: alisonv2/kub-v3-auth:latest
