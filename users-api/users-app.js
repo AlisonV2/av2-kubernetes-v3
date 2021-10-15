@@ -21,7 +21,8 @@ app.post('/signup', async (req, res) => {
   }
 
   try {
-    const hashedPW = await axios.get('http://auth/hashed-password/' + password);
+    // const hashedPW = await axios.get('http://auth/hashed-password/' + password);
+    const hashedPW = 'dummy';
     console.log(hashedPW, email);
     res.status(201).json({ message: 'User created!' });
   } catch (err) {
@@ -48,9 +49,13 @@ app.post('/login', async (req, res) => {
   }
 
   const hashedPassword = password + '_hash';
-  const response = await axios.get(
-    'http://auth/token/' + hashedPassword + '/' + password
-  );
+  // const response = await axios.get(
+  //   'http://auth/token/' + hashedPassword + '/' + password
+  // );
+  const response = { status: 200, data: {
+    token: 'abcdef'
+    }   
+  };
   if (response.status === 200) {
     return res.status(200).json({ token: response.data.token });
   }
