@@ -17,4 +17,4 @@ spec:
           image: alisonv2/kub-v3-users:latest
           env: 
             - name: AUTH_ADDRESS
-              value: localhost
+              value: "auth-service.default"
