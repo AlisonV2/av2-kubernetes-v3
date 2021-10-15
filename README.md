@@ -135,3 +135,28 @@ kubectl apply -f users-deployment.yaml
 - Created auth-deployment.yaml
 - Created auth-service.yaml
 - Chosed ClusterIP as a service type so the auth-api is not exposed outside the cluster
+- Modified get adress in users-app.js to used env variables provided by kubernetes (ALLCAPSSERVICENAME_SERVICE_SERVICE_HOST)
+- Added the same env name to docker-compose
+- Modified env in users-deployment
+- Applied auth-deployment and service
+- Reapplied users-deployment (As the file didn't change, I deleted the currently running one so the new one is applied.)
+- Checked if pods are up and running
+
+<i>Note: Kept the manually set env variable for the first call, so I can have both options as a reminder</i>
+
+```sh
+# Make sure you're in users-api folder
+docker build -t alisonv2/kub-v3-users .
+docker push alisonv2/kub-v3-users
+cd ..
+cd kubernetes
+kubectl apply -f auth-service.yaml,auth-deployment.yaml
+kubectl delete -f users-deployment.yaml
+kubectl apply -f users-deployment.yaml
+kubectl get pods
+```
+
+- Tested with Postman
+
+
+
