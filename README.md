@@ -177,6 +177,54 @@ kubectl get namespaces
 
 - Tested with Postman
 
-### Step 6: 
+### Step 6: Tasks API Deployment and Service
 
+- Created tasks-deployment.yaml and service-deployment.yaml with env variables
+- Modified API url in tasks-app.js to use env variables
+- Modified docker-compose to set env variables
+- Built and pushed tasks image to DockerHub
+- Applied deployment and service
+- Checked running deployments & pods
+- Checked services 
 
+```sh
+docker build -t alisonv2/kub-v3-tasks .
+docker push alisonv2/kub-v3-tasks
+cd ..
+cd kubernetes
+kubectl apply -f tasks-service.yaml,tasks-deployment.yaml
+kubectl get deployments
+kubectl get pods
+```
+
+<img src="./.img/deployments.jpg" />
+
+<img src="./.img/pods.jpg" />
+
+- Check what services are running with 
+
+```sh
+kubectl get services
+```
+
+<img src="./.img/services1.jpg" />
+
+- Start tasks service and get the URL to send requests to the tasks service
+
+```sh
+minikube service tasks-service
+```
+
+- Test with Postman: 
+
+<i>Note: 
+As we don't have any tasks yet, the get request will send an error. So first, we need to send a POST request with a header and body.
+</i>
+
+<img src="./.img/tasks.jpg" />
+
+<img src="./.img/tasks1.jpg" />
+
+<i>Now we can send the get request, with the same header. </i>
+
+### Step 7: 
