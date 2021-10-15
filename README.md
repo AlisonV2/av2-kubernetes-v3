@@ -91,6 +91,9 @@ kubectl apply -f users-service.yaml
 minikube service users-service
 ```
 
+
+<img src="./.img/users-service.jpg" />
+
 ### Step 4: Deployment & Service Creation for Auth API
 
 - Reverted users-api code so it does send requests to the auth-api
@@ -217,6 +220,8 @@ kubectl get services
 minikube service tasks-service
 ```
 
+<img src="./.img/tasks-service.jpg" />
+
 - Test with Postman: 
 
 <i>Note: 
@@ -234,7 +239,9 @@ As we don't have any tasks yet, the get request will send an error. So first, we
 ### Step 7: Client Creation
 
 - Created Client with CRA
-- Created Dockerfile (added Nginx to the build)
+- Created Dockerfile with Node
+- Created nginx config file
+- Added Nginx to client's Dockerfile
 - Built and ran container
 
 ```sh
@@ -251,7 +258,30 @@ docker run -p 80:80 --rm -d alisonv2/kub-v3-client
 
 <img src="./.img/services2.jpg">
 
-- 
+- Exposed client service
 
+```sh
+minikube service client-service
+```
+<img src="./.img/client-service.jpg" />
 
+### Step 8: Styles Improvements
+
+- Tweaked styles to make it look a tiny bit better
+- Added window location reload for auto fetch
+- Rebuilt image
+- Pushed image to DockerHub
+- Removed deployment
+- Reapplied deployment
+- Checked if everything is still up and running
+
+```sh
+docker build -t alisonv2/kub-v3-client .
+docker push alisonv2/kub-v3-client:latest
+cd ..
+cd kubernetes
+kubectl delete -f client-deployment.yaml
+kubectl apply -f client-deployment.yaml
+kubectl get deployments
+```
 

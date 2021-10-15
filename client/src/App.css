@@ -1,5 +1,21 @@
-.fetched-tasks {
+.tasks {
     display: flex;
+    flex-direction: column;
     justify-content: center;
+    max-width: 50%;
+    margin: 0 auto;
+    text-align: center;
+    padding: 3rem;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
     margin-top: 2rem;
+}
+
+@media screen and (max-width: 768px) {
+    .tasks {
+        max-width: 80%;
+    }
+}
+
+.fetch-button {
+    margin-bottom: 2rem;
 }

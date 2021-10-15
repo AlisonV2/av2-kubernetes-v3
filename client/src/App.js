@@ -44,6 +44,7 @@ function App() {
       .then(function (resData) {
         console.log(resData);
       });
+      window.location.reload();
   }
 
   return (
@@ -51,7 +52,7 @@ function App() {
       <section className="new-task">
         <NewTask onAddTask={addTaskHandler} />
       </section>
-      <section className="fetched-tasks">
+      <section className="tasks">
         <div className="fetch-button">
           <button onClick={fetchTasks}>Fetch Tasks</button>
         </div>
