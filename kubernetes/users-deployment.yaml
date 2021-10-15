@@ -14,4 +14,9 @@ spec:
     spec:
       containers:
         - name: users
-          image: alisonv2/kub-v3:latest
+          image: alisonv2/kub-v3-users:latest
+          env: 
+            - name: AUTH_ADDRESS
+              value: localhost
+        - name: auth
+          image: alisonv2/kub-v3-auth:latest
