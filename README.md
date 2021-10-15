@@ -12,7 +12,8 @@ Hence, the multiple repos.
 
 - Users-API: Creates users and Logs users 
 - Auth-API: Generate and verify tokens for authenticated users
-- Task-API: Stores users tasks in a file and received a token to be verified
+- Tasks-API: Stores users tasks in a file and received a token to be verified
+- Client: Calls the Tasks API through Nginx Reverse Proxy
 
 <i>Note: Dummy data, there is no database (so far)</i>
 
