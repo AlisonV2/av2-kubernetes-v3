@@ -142,7 +142,26 @@ kubectl apply -f users-deployment.yaml
 - Reapplied users-deployment (As the file didn't change, I deleted the currently running one so the new one is applied.)
 - Checked if pods are up and running
 
-<i>Note: Kept the manually set env variable for the first call, so I can have both options as a reminder</i>
+<i>Note: 
+I kept the manually set env variable for the first call, so I can have both options as a reminder.
+
+- Option 1: Native env variables created by kubernetes
+
+```env
+process.env.NAME_SERVICE_SERVICE_HOST
+```
+
+- Option 2: CoreDNS for automatic domain names
+
+```yaml
+value: "servicename.namespace"
+```
+The namespaces are available with
+
+```sh
+kubectl get namespaces
+```
+</i>
 
 ```sh
 # Make sure you're in users-api folder
@@ -157,6 +176,8 @@ kubectl get pods
 ```
 
 - Tested with Postman
+
+### Step 6: Pod to pod communication with DNS
 
 
 
