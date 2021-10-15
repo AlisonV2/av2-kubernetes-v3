@@ -159,9 +159,9 @@ kubectl get pods
 I kept the manually set env variable for the first call, so I can have both options as a reminder.
 
 - Option 1: Native env variables created by kubernetes
-
 </i>
-```env
+
+```js
 process.env.NAME_SERVICE_SERVICE_HOST
 ```
 <i>
