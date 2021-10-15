@@ -1,0 +1,15 @@
+{
+  "name": "auth-api",
+  "version": "1.0.0",
+  "description": "",
+  "main": "auth-app.js",
+  "scripts": {
+    "start": "node auth-app.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Alison Vandromme",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}

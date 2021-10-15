@@ -19,4 +19,10 @@ Note: Dummy data, there is no database
 
 ## Method used
 
-### Step 1: Node Sample App Creation
+### Step 1: Node/Express Apps
+
+- Created user-API
+- Created auth-API
+- Created tasks-API
+
+### Step 2: Dockerized APIs
