@@ -18,7 +18,9 @@ Hence, the multiple repos.
 
 ## Stack 
 
-<img src="https://img.shields.io/badge/kubernetes-326ce5.svg?&style=for-the-badge&logo=kubernetes&logoColor=white"/> <img src="https://img.shields.io/badge/Docker-2CA5E0?style=for-the-badge&logo=docker&logoColor=white" /> <img src="https://img.shields.io/badge/Node.js-339933?style=for-the-badge&logo=nodedotjs&logoColor=white" /> <img src="https://img.shields.io/badge/Express.js-000000?style=for-the-badge&logo=express&logoColor=white" /> <img src="https://img.shields.io/badge/JavaScript-323330?style=for-the-badge&logo=javascript&logoColor=F7DF1E" /> <img src="https://img.shields.io/badge/npm-CB3837?style=for-the-badge&logo=npm&logoColor=white" />
+<img src="https://img.shields.io/badge/kubernetes-326ce5.svg?&style=for-the-badge&logo=kubernetes&logoColor=white"/> <img src="https://img.shields.io/badge/Nginx-009639?style=for-the-badge&logo=nginx&logoColor=white
+" /> <img src="https://img.shields.io/badge/Docker-2CA5E0?style=for-the-badge&logo=docker&logoColor=white" /> <img src="https://img.shields.io/badge/Node.js-339933?style=for-the-badge&logo=nodedotjs&logoColor=white" /> <img src="https://img.shields.io/badge/Express.js-000000?style=for-the-badge&logo=express&logoColor=white" /> <img src="https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB
+" /> <img src="https://img.shields.io/badge/JavaScript-323330?style=for-the-badge&logo=javascript&logoColor=F7DF1E" /> <img src="https://img.shields.io/badge/npm-CB3837?style=for-the-badge&logo=npm&logoColor=white" />
 
 ## Architecture
 
@@ -227,4 +229,29 @@ As we don't have any tasks yet, the get request will send an error. So first, we
 
 <i>Now we can send the get request, with the same header. </i>
 
-### Step 7: 
+<img src="./.img/tasks2.jpg" />
+
+### Step 7: Client Creation
+
+- Created Client with CRA
+- Created Dockerfile (added Nginx to the build)
+- Built and ran container
+
+```sh
+docker build -t alisonv2/kub-v3-client .
+docker run -p 80:80 --rm -d alisonv2/kub-v3-client
+```
+
+- Created client-deployment and service
+- Built and pushed image to DockerHub
+- Applied deployment and service
+- Checked if services and pods are all available
+
+<img src="./.img/pods1.jpg">
+
+<img src="./.img/services2.jpg">
+
+- 
+
+
+

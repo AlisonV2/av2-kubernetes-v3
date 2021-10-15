@@ -1,0 +1,38 @@
+form {
+  max-width: 50%;
+  margin: 0 auto;
+  text-align: center;
+  padding: 3rem;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+label {
+  font-weight: bold;
+  margin-bottom: .75rem;
+  display: block;
+  font-size: 1.25rem;
+}
+
+input {
+  font: inherit;
+  padding: 1rem;
+  border: 1px solid #ccc;
+  font-size: 1.5rem;
+  display: block;
+  width: 100%;
+  margin-bottom: 1rem;
+  text-align: center;
+  color: #242424;
+}
+
+input:focus {
+  outline: none;
+  border-color: #42acb3;
+  background-color: #edf9f9;
+}
+
+.form-button {
+  display: flex;
+  justify-content: center;
+  margin-top: 1rem;
+}

@@ -10,19 +10,26 @@ const app = express();
 
 app.use(express.json());
 
-const extractAndVerifyToken = async (headers) => {
-  if (!headers.authorization) {
-    throw new Error('No token provided.');
-  }
-  const token = headers.authorization.split(' ')[1];
+app.use((req, res, next) => {
+  res.setHeader('Access-Control-Allow-Origin', '*');
+  res.setHeader('Access-Control-Allow-Methods', 'POST,GET,OPTIONS');
+  res.setHeader('Access-Control-Allow-Headers', 'Content-Type,Authorization');
+  next();
+})
 
-  const response = await axios.get(`http://${process.env.AUTH_ADDRESS}/verify-token/` + token);
-  return response.data.uid;
-};
+// const extractAndVerifyToken = async (headers) => {
+//   if (!headers.authorization) {
+//     throw new Error('No token provided.');
+//   }
+//   const token = headers.authorization.split(' ')[1]; 
+
+//   const response = await axios.get(`http://${process.env.AUTH_ADDRESS}/verify-token/` + token);
+//   return response.data.uid;
+// };
 
 app.get('/tasks', async (req, res) => {
   try {
-    const uid = await extractAndVerifyToken(req.headers);
+    // const uid = await extractAndVerifyToken(req.headers); 
     fs.readFile(filePath, (err, data) => {
       if (err) {
         console.log(err);
@@ -30,7 +37,7 @@ app.get('/tasks', async (req, res) => {
       }
       const strData = data.toString();
       const entries = strData.split('TASK_SPLIT');
-      entries.pop();
+      entries.pop(); 
       console.log(entries);
       const tasks = entries.map((json) => JSON.parse(json));
       res.status(200).json({ message: 'Tasks loaded.', tasks: tasks });
@@ -43,10 +50,13 @@ app.get('/tasks', async (req, res) => {
 
 app.post('/tasks', async (req, res) => {
   try {
-    const uid = await extractAndVerifyToken(req.headers);
-    const text = req.body.text;
-    const title = req.body.title;
-    const task = { title, text };
+    // const uid = await extractAndVerifyToken(req.headers);
+    // const text = req.body.text;
+    // const title = req.body.title;
+    const task = { 
+      title: req.body.title,
+      text: req.body.text 
+    };
     const jsonTask = JSON.stringify(task);
     fs.appendFile(filePath, jsonTask + 'TASK_SPLIT', (err) => {
       if (err) {
