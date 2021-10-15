@@ -142,26 +142,6 @@ kubectl apply -f users-deployment.yaml
 - Reapplied users-deployment (As the file didn't change, I deleted the currently running one so the new one is applied.)
 - Checked if pods are up and running
 
-<i>Note: 
-I kept the manually set env variable for the first call, so I can have both options as a reminder.
-
-- Option 1: Native env variables created by kubernetes
-
-```env
-process.env.NAME_SERVICE_SERVICE_HOST
-```
-
-- Option 2: CoreDNS for automatic domain names
-
-```yaml
-value: "servicename.namespace"
-```
-The namespaces are available with
-
-```sh
-kubectl get namespaces
-```
-</i>
 
 ```sh
 # Make sure you're in users-api folder
@@ -173,6 +153,30 @@ kubectl apply -f auth-service.yaml,auth-deployment.yaml
 kubectl delete -f users-deployment.yaml
 kubectl apply -f users-deployment.yaml
 kubectl get pods
+```
+
+<i>Note: 
+I kept the manually set env variable for the first call, so I can have both options as a reminder.
+
+- Option 1: Native env variables created by kubernetes
+
+</i>
+```env
+process.env.NAME_SERVICE_SERVICE_HOST
+```
+<i>
+- Option 2: CoreDNS for automatic domain names
+</i>
+
+```yaml
+value: "servicename.namespace"
+```
+<i>
+The namespaces are available with
+</i>
+
+```sh
+kubectl get namespaces
 ```
 
 - Tested with Postman
