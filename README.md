@@ -22,7 +22,7 @@ Hence, the multiple repos.
 
 ## Architecture
 
-<img src="archi.jpg">
+<img src="/.img/archi.jpg">
 
 ## Method used
 
@@ -124,11 +124,11 @@ kubectl apply -f users-deployment.yaml
 
 - Signup test with Postman: Tests the users-api
 
-<img src="signup-test.jpg" />
+<img src="./.img/signup-test.jpg" />
 
 - Login test with Postman: Tests users/auth APIs communication, as the token is created in the auth-api
 
-<img src="login-test.jpg" />
+<img src="./.img/login-test.jpg" />
 
 ### Step 5: Users-deployment and auth-deployment Separation
 
