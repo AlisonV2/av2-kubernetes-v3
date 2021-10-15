@@ -164,16 +164,12 @@ I kept the manually set env variable for the first call, so I can have both opti
 ```js
 process.env.NAME_SERVICE_SERVICE_HOST
 ```
-<i>
-- Option 2: CoreDNS for automatic domain names
-</i>
+<i>- Option 2: CoreDNS for automatic domain names</i>
 
 ```yaml
 value: "servicename.namespace"
 ```
-<i>
-The namespaces are available with
-</i>
+<i>The namespaces are available with</i>
 
 ```sh
 kubectl get namespaces
@@ -181,7 +177,6 @@ kubectl get namespaces
 
 - Tested with Postman
 
-### Step 6: Pod to pod communication with DNS
-
+### Step 6: 
 
 
